@@ -100,5 +100,15 @@ class Student_manager {
         }
     }
 
+    // method to display student status
+
+    show_student_status(student_id:number){
+        let findStudent = this.find_student(student_id);
+        if(findStudent){
+            findStudent.show_status()
+        }
+
+    }
+
 
 }
