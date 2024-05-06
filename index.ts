@@ -127,7 +127,7 @@ async function main() {
                 name:'choice',
                 type: 'list',
                 message:'Select',
-                choice: [
+                choices: [
                     "Add Student",
                     'Enroll Student',
                     'View Student Balance',
@@ -136,7 +136,83 @@ async function main() {
                     'Exit'
                 ]
             }
-        ])
+        ]);
+
+        // using based of user choice
+
+        switch(choice.choice){
+            case "Add Student":
+                let name_input = await inquirer.prompt([
+                    {
+                        name:"name",
+                        type: "input",
+                        message: 'Enter a student name'
+                    }
+                ]);
+                student_manager.add_student(name_input.name);
+                break;
+            
+            case "Enroll Student":
+                let enroll_student = await inquirer.prompt([
+                    {
+                        name:'student_id',
+                        type:'number',
+                        message:"Enter a student ID"
+                    },
+                    {
+                        name:"Course_name",
+                        type:"input",
+                        message:"Enter a course name"
+                    }
+                ]);
+                student_manager.enroll_student(enroll_student.student_id,enroll_student.Course_name);
+                break;
+
+            case "View Student Balance":
+                let stu_id = await inquirer.prompt([
+                    {
+                        name:"stu_id",
+                        type:'number',
+                        message:"Enter a Student ID"
+                    }
+                ]);
+                student_manager.view_student_balance(stu_id.stu_id);
+                break;
+            
+            case "Pay Fees":
+                let pay_fees = await inquirer.prompt([
+                    {
+                        name:'stu_id',
+                        type:'number',
+                        message:'Enter Student ID'
+                    },
+                    {
+                        name:'fees',
+                        type:'number',
+                        message:'Enter Fees For Pay'
+                    }
+                ]);;
+                break;
+
+            case "Show Status":
+                let status = await inquirer.prompt([
+                    {
+                        name:'stu_id',
+                        type:'number',
+                        message:'Enter Student ID'
+                    }
+                ]);
+                student_manager.show_student_status(status.stu_id);
+                break;
+            
+            case "Exit":
+                console.log("Exixting...")
+                process.exit()
+                // exit() == > false the while loop and exit all the code
+                
+            
+
+        }
     }
     
 }
