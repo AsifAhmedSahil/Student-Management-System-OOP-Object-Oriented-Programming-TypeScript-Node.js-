@@ -62,18 +62,43 @@ class Student_manager {
         console.log(`Student: ${name} added successfully. Student ID: ${student.id}`)
     }
 
+    // method for find student*** by student id
+    find_student (student_id: number){
+        return this.students.find((std) => std.id === student_id);
+
+    }
 
     // method to enroll a student in a course
     enroll_student(student_id:number,course:string){
-        let findStudent = this.students.find((std) => std.id === student_id);
+        let findStudent = this.find_student(student_id);
         if(findStudent){
             // use inheritence bcoz we use parent class method in our child class
             findStudent.enroll_course(course);
             console.log(`${findStudent.name} enrolled in ${course} course successfully`)
         }
+    }
 
+    // method to view a student balance
+    view_student_balance(student_id: number){
+        let findStudent = this.find_student(student_id);
+        if(findStudent){
+            findStudent.view_balance()
+        }
+        else{
+            console.log("Student not Found. Please a valid student ID!")
+        }
     }
      
+    // method to pay student fees
+    pay_student_fees(student_id: number,amount:number){
+        let findStudent = this.find_student(student_id);
+        if(findStudent){
+            findStudent.pay_fees(amount)
+        }
+        else{
+            console.log("Student not Found. Please a valid student ID!")
+        }
+    }
 
 
 }
