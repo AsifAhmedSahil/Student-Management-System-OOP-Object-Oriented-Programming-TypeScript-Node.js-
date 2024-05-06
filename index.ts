@@ -42,6 +42,24 @@ class Student{
         console.log(`BALANCE: ${this.balance}`)
     }
 
+}
+
+// class for student manage class to manage student
+
+class Student_manager {
+    students: Student[]
+
+    constructor(){
+        this.students = []; //initially empty but when we add student then it saves in this array
+
+
+    }
+    // method to add a student
+    add_student(name:string){
+        let student = new Student(name);
+        this.students.push(student) // save new student in the array***
+        console.log(`Student: ${name} added successfully. Student ID: ${student.id}`)
+    }
 
 
 }
