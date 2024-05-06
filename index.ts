@@ -109,6 +109,34 @@ class Student_manager {
         }
 
     }
+}
 
+// main function to run the program
 
+async function main() {
+    console.log("Welcome to Student management system - 2024")
+    console.log('-'.repeat(50))
+
+    let student_manager = new Student_manager();
+
+    // while loop to keep programm runnning
+    while(true){
+        // asking user to choose an options
+        let choice = await inquirer.prompt([
+            {
+                name:'choice',
+                type: 'list',
+                message:'Select',
+                choice: [
+                    "Add Student",
+                    'Enroll Student',
+                    'View Student Balance',
+                    'Pay Fees',
+                    'Show Status',
+                    'Exit'
+                ]
+            }
+        ])
+    }
+    
 }
