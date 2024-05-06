@@ -50,6 +50,7 @@ class Student_manager {
     students: Student[]
 
     constructor(){
+        // *****student details here****
         this.students = []; //initially empty but when we add student then it saves in this array
 
 
@@ -60,6 +61,19 @@ class Student_manager {
         this.students.push(student) // save new student in the array***
         console.log(`Student: ${name} added successfully. Student ID: ${student.id}`)
     }
+
+
+    // method to enroll a student in a course
+    enroll_student(student_id:number,course:string){
+        let findStudent = this.students.find((std) => std.id === student_id);
+        if(findStudent){
+            // use inheritence bcoz we use parent class method in our child class
+            findStudent.enroll_course(course);
+            console.log(`${findStudent.name} enrolled in ${course} course successfully`)
+        }
+
+    }
+     
 
 
 }
